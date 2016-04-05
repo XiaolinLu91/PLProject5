@@ -67,9 +67,20 @@ public class ListComprehension {
         //3
         System.out.println("\nselect last_name, first_name, title, salary from s_emp where salary > 1500 and dept_id > 40: ");
         emp.stream()
-                .filter(e-> (e.get(7) > 1500) )
+                .filter(e-> (int) e.get(7) > 1500 && (int) e.get(9) > 40)
                 .forEach(e-> {System.out.println(e);});
-
+        //4
+        System.out.println("\nselect last_name, first_name, title, salary from s_emp where salary > 1500: ");
+        emp.stream()
+                .filter(e -> (int) e.get(0) == 1)
+                .map(e-> (int)e.get(0))
+                .forEach(e -> {System.out.println(e);});
+        //5
+        System.out.println("\nselect last_name, first_name, title, salary from s_emp where salary > 1500 and dept_id > 40 order by last_name: ");
+        emp.stream()
+                .filter(e -> (int) e.get(7) > 1500)
+                .sorted((p1,p2) -> (p1.get(1).toString()).compareTo(p2.get(1).toString()))
+                .forEach(e-> {System.out.println(e);});
     }
 
 }
