@@ -69,22 +69,15 @@ public class ListComprehension {
         emp.stream()
                 .filter(e-> (int) e.get(7) > 1500 && (int) e.get(9) > 40)
                 .forEach(e-> {System.out.println(e);});
-        /*
+
         //4
-        System.out.println("\nselect last_name, first_name, title, salary from s_emp where salary > 1500: ");
-        emp.stream()
-                .filter(e -> (int) e.get(0) == 1)
-                .map(e-> (int)e.get(0))
-                .forEach(e -> {System.out.println(e);});
-                */
-        //5
         System.out.println("\nselect last_name, first_name, title, salary from s_emp where salary > 1500 and dept_id > 40 order by last_name: ");
         emp.stream()
                 .filter(e -> (int) e.get(7) > 1500 && (int) e.get(9) > 40)
                 .sorted((p1,p2) -> (p1.get(1).toString()).compareTo(p2.get(1).toString()))
                 .map(e -> e.get(1).toString() + " " + e.get(2).toString() +" " + e.get(6).toString() + " " + e.get(7))
                 .forEach(e-> {System.out.println(e);});
-        //6
+        //5
         System.out.println("\nselect ename, dname from emp e join dept d on(e.deptno = d.deptno):");
         emp.stream()
                 .flatMap( e-> dept.stream().filter(d-> (int) e.get(9) == (int) d.get(0)).map(d-> e.get(1).toString()+ " " + d.get(1)))
